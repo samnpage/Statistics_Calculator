@@ -4,6 +4,12 @@ const getMedian = (array) => {
     const sorted = array.sort((a, b) => {
         return a - b
     });
+
+    if (sorted.length % 2 === 0) {
+        return getMean([sorted[sorted.length / 2], sorted[(sorted.length /2) - 1]]);
+    } else {
+        return sorted[Math.floor(sorted.length / 2)]
+    }
 }
 
 const calculate = () => {
@@ -13,5 +19,8 @@ const calculate = () => {
 
     const mean = getMean(numbers);
 
+    const median = getMedian(numbers);
+
+    document.querySelector('#median').textContent = median;
     document.querySelector("#mean").textContent = mean;
 }
